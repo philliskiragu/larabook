@@ -20,7 +20,7 @@ $I->seeRecord('users', [
     'username' => 'JohnDoe'
 ]);
 
-$I->assertTrue(Auth::check());
+//$I->assertTrue(Auth::check());
 
 
 

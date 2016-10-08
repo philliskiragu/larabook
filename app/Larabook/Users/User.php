@@ -1,50 +1,62 @@
 <?php namespace Larabook\Users;
 
-use Illuminate\Auth\UserTrait;
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableTrait;
+use Eloquent;
+use Hash;
 use Illuminate\Auth\Reminders\RemindableInterface;
-use Eloquent, Hash;
+use Illuminate\Auth\Reminders\RemindableTrait;
+use Illuminate\Auth\UserInterface;
+use Illuminate\Auth\UserTrait;
 use Larabook\Registration\Events\UserRegistered;
 use Laracasts\Commander\Events\EventGenerator;
 
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Eloquent implements UserInterface, RemindableInterface
+{
 
-	use UserTrait, RemindableTrait, EventGenerator;
+    use UserTrait, RemindableTrait, EventGenerator;
 
-	protected $fillable =['username','email','password'];
+    protected $fillable = ['username', 'email', 'password'];
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('password', 'remember_token');
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = array('password', 'remember_token');
 
-	/*
-	 * password hashing
-	 */
-	public function setPasswordAttribute($password)
-	{
-		$this->attributes['password'] = Hash::make($password);
-	}
-	/*
-	 * Register a new user
-	 */
-	public static function register($username, $email, $password)
-	{
-		$user = new static(compact('username', 'email', 'password'));
+    /*
+     * password hashing
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = Hash::make($password);
+    }
 
-		$user->raise(new UserRegistered($user));
+    /**
+     * A user has many statuses
+     * @return mixed
+     */
+    public function statuses()
+    {
+        return $this->hasMany('Larabook\Statuses\Status');
+    }
 
-		return $user;
-	}
+    /*
+     * Register a new user
+     */
+    public static function register($username, $email, $password)
+    {
+        $user = new static(compact('username', 'email', 'password'));
+
+        $user->raise(new UserRegistered($user));
+
+        return $user;
+    }
 }

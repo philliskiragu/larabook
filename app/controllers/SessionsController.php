@@ -51,6 +51,7 @@ class SessionsController extends \BaseController {
 
 		}
 
+
 	}
 
 	public function destroy()
