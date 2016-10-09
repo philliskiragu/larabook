@@ -8,12 +8,13 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\UserTrait;
 use Larabook\Registration\Events\UserRegistered;
 use Laracasts\Commander\Events\EventGenerator;
+use Laracasts\Presenter\PresentableTrait;
 
 
 class User extends Eloquent implements UserInterface, RemindableInterface
 {
 
-    use UserTrait, RemindableTrait, EventGenerator;
+    use UserTrait, RemindableTrait, EventGenerator, PresentableTrait;
 
     protected $fillable = ['username', 'email', 'password'];
 
@@ -23,6 +24,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface
      * @var string
      */
     protected $table = 'users';
+
+    /**
+     * Path to the presenter for a user
+     * @var string
+     */
+    protected $presenter = 'Larabook\Users\UserPresenter';
 
     /**
      * The attributes excluded from the model's JSON form.
