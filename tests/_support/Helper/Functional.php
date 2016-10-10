@@ -25,7 +25,7 @@
         public function postAStatus($body)
         {
             $I =$this->getModule('Laravel4');
-            $I->fillField('Status:', $body);
+            $I->fillField('body', $body);
             $I->click('Post Status');
 //            $this->have('Larabook\Statuses\Status', $overides);
         }
@@ -37,6 +37,7 @@
 
         public function haveAnAccount($overides = [])
         {
+//            TestDummy::create('Larabook\Users\User', $overides);
             $this->have('Larabook\Users\User', $overides);
         }
     }

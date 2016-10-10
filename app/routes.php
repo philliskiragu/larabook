@@ -62,3 +62,12 @@
         'as' => 'statuses_path',
         'uses' => 'StatusController@store'
     ]);
+
+    /*
+     * users
+     */
+
+    Route::get('users', [
+        'as' => 'users_path',
+        'uses' => 'UsersController@index'
+    ]);

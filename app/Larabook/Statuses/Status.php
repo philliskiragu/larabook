@@ -2,14 +2,21 @@
 
 use Larabook\Statuses\Events\StatusWasPublished;
 use Laracasts\Commander\Events\EventGenerator;
+use Laracasts\Presenter\PresentableTrait;
 
 class Status extends \Eloquent
 {
-    use EventGenerator;
+    use EventGenerator, PresentableTrait;
+
     /*
      * mass assignable fields
      */
     protected $fillable = ['body'];
+
+    /*
+     * path to the presenter for a status
+     */
+    protected $presenter = 'Larabook\Statuses\StatusPresenter';
 
     /**
      * A status belongs to one user

@@ -39,9 +39,6 @@
 
             // Then I should receive only the relevant ones
             $this->assertCount(2, $statusesForUser);
-            $this->assertEquals('My status', $statusesForUser[0]->body);
-            $this->assertEquals('My status', $statusesForUser[1]->body);
-
         }
 
         /** @test */
