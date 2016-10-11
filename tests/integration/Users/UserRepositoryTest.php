@@ -1,6 +1,7 @@
 <?php
 
 
+    use Larabook\Users\User;
     use Larabook\Users\UserRepository;
     use Laracasts\TestDummy\Factory as TestDummy;
 
@@ -26,4 +27,20 @@
 
             $this->assertCount(2,$results);
         }
+
+        /** @test */
+        public function it_finds_a_user_with_statuses_by_their_username()
+        {
+            $statuses = TestDummy::times(3)->create('Larabook\Statuses\Status');
+
+            $username = $statuses[0]->user->username;
+
+            $user = $this->repo->findByUsername($username);
+
+            $this->assertEquals($username, $user->username);
+            $this->assertCount(3,$user->statuses);
+
+
+        }
+
     }

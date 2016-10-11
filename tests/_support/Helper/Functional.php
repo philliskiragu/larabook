@@ -10,9 +10,10 @@
         public function signIn()
         {
             $email = 'foo@example.com';
+            $username = 'Foobar';
             $password = 'foo';
 
-            $this->haveAnAccount(compact('email', 'password'));
+            $this->haveAnAccount(compact('email', 'username', 'password'));
 
             $I = $this->getModule('Laravel4');
 
@@ -25,6 +26,7 @@
         public function postAStatus($body)
         {
             $I =$this->getModule('Laravel4');
+
             $I->fillField('body', $body);
             $I->click('Post Status');
 //            $this->have('Larabook\Statuses\Status', $overides);

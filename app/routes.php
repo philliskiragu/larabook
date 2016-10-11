@@ -71,3 +71,8 @@
         'as' => 'users_path',
         'uses' => 'UsersController@index'
     ]);
+
+    Route::get('@{usersname}', [
+        'as' => 'profile_path',
+        'uses' => 'UsersController@show'
+    ]);

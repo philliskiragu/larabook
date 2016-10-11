@@ -66,4 +66,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface
 
         return $user;
     }
+
+    /**
+     * Determine if the given user is same as current user
+     * @param User $user
+     * @return bool
+     */
+    public function is(User $user)
+    {
+        return $this->username == $user->username;
+    }
 }
