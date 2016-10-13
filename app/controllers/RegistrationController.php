@@ -1,52 +1,44 @@
 <?php
 
-use Larabook\Core\CommandBus;
-use Larabook\Forms\RegistrationForm;
-use Larabook\Registration\RegisterUserCommand;
-use Laracasts\Flash\Flash;
+    use Larabook\Forms\RegistrationForm;
+    use Larabook\Registration\RegisterUserCommand;
+    use Laracasts\Flash\Flash;
 
-class RegistrationController extends \BaseController {
+    class RegistrationController extends \BaseController
+    {
+        private $registrationForm;
 
-    use CommandBus;
+        /**
+         * @param RegistrationForm $registrationForm
+         */
+        function __construct(RegistrationForm $registrationForm)
+        {
+            $this->registrationForm = $registrationForm;
 
-
-	private $registrationForm;
-
-	/**
-	 * @param RegistrationForm $registrationForm
-     */
-	function __construct(RegistrationForm $registrationForm)
-	{
-		$this->registrationForm = $registrationForm;
-
-		$this->beforeFilter('guest');
-	}
+            $this->beforeFilter('guest');
+        }
 
 
-	// function to register user
-	public function create()
-	{
-		return View::make('registration.create');
-	}
+        // function to register user
+        public function create()
+        {
+            return View::make('registration.create');
+        }
 
-    /**
-     * @return mixed
-     * @throws \Laracasts\Validation\FormValidationException
-     */
-    public function store()
-	{
-		$this->registrationForm->validate(Input::all());
+        /**
+         * @return mixed
+         * @throws \Laracasts\Validation\FormValidationException
+         */
+        public function store()
+        {
+            $this->registrationForm->validate(Input::all());
 
-		extract(Input::only('username', 'email', 'password'));
+            $user = $this->execute(RegisterUserCommand::class);
 
-		$user = $this->execute(
-            new RegisterUserCommand($username, $email, $password)
-        );
+            Auth::login($user);
 
-		Auth::login($user);
+            Flash::success('Glad to have you join us!');
 
-		Flash::success('Glad to have you join us!');
-
-		return Redirect::home();
-	}
-}
+            return Redirect::home();
+        }
+    }
