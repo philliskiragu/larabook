@@ -4,7 +4,7 @@
 
 	class BaseController extends Controller {
 
-	use CommanderTrait
+	use CommanderTrait;
 
 	/**
 	 * Setup the layout used by the controller.

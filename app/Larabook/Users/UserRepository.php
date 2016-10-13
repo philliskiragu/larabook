@@ -32,4 +32,33 @@ class UserRepository
             $query->latest();
         }])->whereUsername($username)->first();
     }
+
+    /**
+     * find user by id
+     * @param $id
+     * @return mixed
+     */
+    public function findById($id){
+        return User::findOrFail($id);
+    }
+
+    /**
+     * follow a user
+     * @param $userIdToFollow
+     * @param User $user
+     * @return mixed
+     */
+    public function follow($userIdToFollow, User $user){
+        return $user->follows()->attach($userIdToFollow);
+    }
+
+    /**
+     * unfollow a user
+     * @param $userIdToUnfollow
+     * @param User $user
+     * @return mixed
+     */
+    public function unfollow($userIdToUnfollow, User $user){
+        return $user->follows()->detach($userIdToUnfollow);
+    }
 }

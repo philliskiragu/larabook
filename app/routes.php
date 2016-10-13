@@ -76,3 +76,16 @@
         'as' => 'profile_path',
         'uses' => 'UsersController@show'
     ]);
+
+    /*
+     * follows
+     */
+    Route::post('follows',[
+        'as'=>'follows_path',
+        'uses'=>'FollowsController@store'
+    ]);
+
+    Route::delete('follows/{id}',[
+        'as'=>'unfollow_path',
+        'uses'=>'FollowsController@destroy'
+    ]);

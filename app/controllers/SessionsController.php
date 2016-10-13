@@ -5,6 +5,7 @@ use Larabook\Forms\SignInForm;
 use Laracasts\Flash\Flash;
 
 class SessionsController extends \BaseController {
+
 	/**
 	 * SessionsController constructor.
 	 */
