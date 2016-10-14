@@ -80,12 +80,12 @@
     /*
      * follows
      */
-    Route::post('follows',[
-        'as'=>'follows_path',
-        'uses'=>'FollowsController@store'
+    Route::post('follows', [
+        'as' => 'follows_path',
+        'uses' => 'FollowsController@store'
     ]);
 
-    Route::delete('follows/{id}',[
-        'as'=>'unfollow_path',
-        'uses'=>'FollowsController@destroy'
+    Route::delete('follows/{id}', [
+        'as' => 'unfollow_path',
+        'uses' => 'FollowsController@destroy'
     ]);
