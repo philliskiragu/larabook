@@ -1,11 +1,11 @@
 <article class="media status-media">
     <div class="pull-left">
-        @include('users.partials.avatar', ['user' =>$status->user])
+        @include('users.partials.avatar', ['user' =>$status->user, 'class'=>'media-object status-media-object'])
     </div>
-    <div class="media-body">
-        <h4 class="media-heading">{{$status->user->username}}</h4>
+    <div class="media-body status-media-body">
+        <h4 class="media-heading status-media-heading">{{$status->user->username}}</h4>
         <p>
-            {{ $status->present()->timeSincePublished() }}
+            <small class="status-media-time">{{ $status->present()->timeSincePublished() }}</small>
         </p>
         {{ $status->body }}
     </div>
