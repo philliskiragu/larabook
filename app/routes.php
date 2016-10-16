@@ -63,6 +63,11 @@
         'uses' => 'StatusesController@store'
     ]);
 
+    Route::post('status/{id}/comments',[
+        'as'=>'comment_path',
+        'uses'=> 'CommentsController@store'
+    ]);
+
     /*
      * users
      */
@@ -89,3 +94,6 @@
         'as' => 'unfollow_path',
         'uses' => 'FollowsController@destroy'
     ]);
+
+    // Password resets
+    Route::controller('password', 'RemindersController');

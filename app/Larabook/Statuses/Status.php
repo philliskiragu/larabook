@@ -41,4 +41,13 @@ class Status extends \Eloquent
 
         return $status;
     }
+
+    /**
+     * A status can have many comments
+     *
+     * @return mixed
+     */
+    public function comments(){
+      return $this->hasMany('Larabook\Statuses\Comment');
+    }
 }
