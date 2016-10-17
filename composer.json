@@ -28,8 +28,11 @@
       "app/tests/TestCase.php",
       "app/Larabook/Forms",
       "app/Larabook/Registration",
-      "app/larabook/Core",
-      "app/Larabook/Users"
+      "app/Larabook/Users",
+      "app/Larabook/Handlers",
+      "app/Larabook/Mailers",
+      "app/Larabook/Providers",
+      "app/Larabook/Statuses"
     ],
     "psr-4": {
       "Larabook\\": "app/Larabook"
