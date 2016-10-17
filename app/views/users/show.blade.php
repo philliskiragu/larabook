@@ -14,12 +14,16 @@
                     <ul class="list-inline text-muted">
                         <li>{{$user->present()->statusCount()}}</li>
                         <li>{{$user->present()->followerCount()}}</li>
-                        <li></li>
+                        <li>{{$user->present()->followedCount()}}</li>
                     </ul>
 
 
                     @foreach($user->followers as $follower)
-                        @include ('users.partials.avatar',['size' =>25, 'user'=>$follower])
+                        <ul class="list-inline text-muted">
+                            <li>@include ('users.partials.avatar',['size' =>25, 'user'=>$follower])</li>
+                            <li>{{$follower->username}}</li>
+                            <li></li>
+                        </ul>
                     @endforeach
 
                 </div>

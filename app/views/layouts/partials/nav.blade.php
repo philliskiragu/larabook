@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
 
         <div class="navbar-header">
@@ -29,7 +29,6 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>{{ link_to_route('profile_path', 'Your Profile', $currentUser->username ) }}</li>
-                            <li><a href="#">Another action</a></li>
                             <li role="separator" class="divider"></li>
                             <li>{{ link_to_route('logout_path','Log Out')}}</li>
                         </ul>

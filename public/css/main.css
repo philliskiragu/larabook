@@ -70,7 +70,7 @@
   border: 1px solid #0091b6; }
 
 .navbar-default {
-  background-color: #00BAE9;
+  background: #00BAE9;
   border-color: #f3f3f3; }
   .navbar-default .navbar-brand {
     color: #fff;
@@ -82,7 +82,8 @@
       color: #2C6C91; }
 
 .navbar-default .navbar-nav > .active > a {
-  background-color: #0091b6; }
+  background: #0091b6;
+  color: #ffffff; }
 
 .nav-gravatar {
   float: left;
@@ -103,7 +104,7 @@
 body {
   padding-top: 80px;
   background-color: #f0f0f0;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Josefin Sans', sans-serif; }
 
 .container h1:first-of-type {
   margin-top: 0; }

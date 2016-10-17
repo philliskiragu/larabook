@@ -25,6 +25,13 @@
             return "{$count} {$plural}";
         }
 
+        public function followedCount(){
+            $count = $this->entity->followedUsers()->count();
+            $plural = 'Following';
+
+            return "{$count} {$plural}";
+        }
+
         public function statusCount(){
             $count = $this->entity->statuses()->count();
             $plural = str_plural('Status', $count);

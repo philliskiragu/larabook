@@ -17,7 +17,7 @@
     {{Form::hidden('status_id', $status->id)}}
 
     <div class="form-group">
-        {{Form::textarea('body', null, ['class'=> 'form-control', 'rows'=>1])}}
+        {{Form::textarea('body', null, ['class'=> 'form-control', 'rows'=>1, 'placeholder'=>'Leave a comment'])}}
     </div>
     {{Form::close()}}
 @endif

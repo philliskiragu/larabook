@@ -1,5 +1,5 @@
 .navbar-default {
-  background-color: #00BAE9;
+  background: #00BAE9;
   border-color: #f3f3f3;
 
   .navbar-brand {
@@ -17,7 +17,8 @@
 }
 
 .navbar-default .navbar-nav > .active > a{
-  background-color: darken(#00BAE9, 10%);
+  background: darken(#00BAE9, 10%);
+  color: #ffffff;
 }
 
 .nav-gravatar{
