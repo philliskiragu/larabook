@@ -25,7 +25,6 @@
                             <li></li>
                         </ul>
                     @endforeach
-
                 </div>
             </div>
 
@@ -37,6 +36,10 @@
 
             @if ($user->is($currentUser))
                 @include('statuses.partials.publish-status-form')
+            @endif
+
+            @if(! $currentUser)
+                <p>Register or Log In to follow this person</p>
             @endif
 
             @include('statuses.partials.statuses', ['statuses'=>$user->statuses])

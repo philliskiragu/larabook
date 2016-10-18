@@ -49,28 +49,52 @@
         'as' => 'logout_path',
         'uses' => 'SessionsController@destroy'
     ]);
-    /*
-     * Statuses
-     */
-
-    Route::get('statuses', [
-        'as' => 'statuses_path',
-        'uses' => 'StatusesController@index'
-    ]);
-
-    Route::post('statuses', [
-        'as' => 'statuses_path',
-        'uses' => 'StatusesController@store'
-    ]);
-
-    Route::post('status/{id}/comments',[
-        'as'=>'comment_path',
-        'uses'=> 'CommentsController@store'
-    ]);
 
     /*
-     * users
+     * Password reset
      */
+    Route::controller('password', 'RemindersController');
+
+    /*
+     * Requires Login
+     */
+    Route::group(array('before' => 'auth'), function () {
+
+        /*
+         * Statuses
+         */
+        Route::get('statuses', [
+            'as' => 'statuses_path',
+            'uses' => 'StatusesController@index'
+        ]);
+
+        Route::post('statuses', [
+            'as' => 'statuses_path',
+            'uses' => 'StatusesController@store'
+        ]);
+
+        Route::post('status/{id}/comments', [
+            'as' => 'comment_path',
+            'uses' => 'CommentsController@store'
+        ]);
+
+        /*
+         * follows
+         */
+        Route::post('follows', [
+            'as' => 'follows_path',
+            'uses' => 'FollowsController@store'
+        ]);
+
+        Route::delete('follows/{id}', [
+            'as' => 'unfollow_path',
+            'uses' => 'FollowsController@destroy'
+        ]);
+    });
+
+    /*
+    * users
+    */
 
     Route::get('users', [
         'as' => 'users_path',
@@ -82,18 +106,5 @@
         'uses' => 'UsersController@show'
     ]);
 
-    /*
-     * follows
-     */
-    Route::post('follows', [
-        'as' => 'follows_path',
-        'uses' => 'FollowsController@store'
-    ]);
 
-    Route::delete('follows/{id}', [
-        'as' => 'unfollow_path',
-        'uses' => 'FollowsController@destroy'
-    ]);
 
-    // Password resets
-    Route::controller('password', 'RemindersController');
