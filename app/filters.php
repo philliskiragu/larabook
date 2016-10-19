@@ -11,9 +11,7 @@
 |
 */
 
-	use Illuminate\Support\Facades\Response;
-
-	App::before(function($request)
+App::before(function($request)
 {
 	//
 });
@@ -91,10 +89,3 @@ Route::filter('csrf', function()
 	}
 });
 
-	/*
-	 * Show message if route is missing
-	 */
-	App::missing(function($exception)
-	{
-		return Response::view('errors.404', array(), 404);
-	});
