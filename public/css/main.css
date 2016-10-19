@@ -101,6 +101,13 @@
 .user-block .media-object {
   margin: auto; }
 
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-top: auto; }
+
 body {
   padding-top: 80px;
   background-color: #f0f0f0;
