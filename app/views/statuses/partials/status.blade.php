@@ -17,8 +17,7 @@
     {{Form::hidden('status_id', $status->id)}}
 
     <div class="form-group">
-        {{Form::textarea('body', null, ['class'=> 'form-control', 'rows'=>1, 'placeholder'=>'Leave a comment', 'required'])}}
-        {{ Form::submit('Comment', ['class' => 'btn btn-default btn-xs status-post-submit']) }}
+        {{Form::textarea('body', null, ['class'=> 'form-control', 'rows'=>1, 'placeholder'=>'Leave a Comment. Press Enter To Post', 'required'])}}
     </div>
     {{Form::close()}}
 @endif
